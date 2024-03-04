@@ -29,13 +29,13 @@
     <div>Select an action below.</div>
     <form class="select-action" @submit.prevent="">
       <div class="action">
-        <button @click.prevent="page = 'checkIn'" class="secondary">Verkada Check In!!</button>
+        <button @click.prevent="page = 'checkIn'" class="secondary">Check In</button>
         <button @click.prevent="call()" class="primary">Call A Receptionist</button>
       </div>
     </form>
   </main>
   <main x-show="page === 'checkIn'" style="width: 100%; height: 100%;">
-    <iframe src="https://www.cisco.com/" frameborder="0" style="width:100%; height: calc(100vh - 50px);"></iframe>
+    <iframe src="www.cisco.com/" frameborder="0" style="width:100%; height: calc(100vh - 50px);"></iframe>
     <button @click="goHome()" class="back-button" style="position: absolute; top: 10px; left: 10px;">Back to Home</button>
   </main>
 
