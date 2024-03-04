@@ -16,9 +16,9 @@
   <link href="styles/style.css" rel="stylesheet">
 </head>
 
-<body x-data="dataModel" x-cloak :class="theme">
+<body x-data="dataModel()" x-cloak :class="theme">
   <header>
-    <div @click="location.reload()" class="logo"></div>
+    <div @click="goHome" class="logo"></div>
     <div class="time-date">
       <div class="date" x-text="date"></div>
       <div class="time" x-text="time"></div>
@@ -29,11 +29,35 @@
     <div>Select an action below.</div>
     <form class="select-action" @submit.prevent="">
       <div class="action">
-        <button @click="location.href='https://www.verkada.com/'" class="secondary">Verkada Check In</button>
-        <button @click="call()" class="primary">Call A Receptionist</button>
+        <button @click.prevent="page = 'checkIn'" class="secondary">Verkada Check In</button>
+        <button @click.prevent="call()" class="primary">Call A Receptionist</button>
       </div>
     </form>
   </main>
-</body>
+  <main x-show="page === 'checkIn'" style="width: 100%; height: 100%;">
+    <iframe src="https://www.verkada.com/guest-check-in" frameborder="0" style="width:100%; height: calc(100vh - 50px);"></iframe>
+    <button @click="goHome()" class="back-button" style="position: absolute; top: 10px; left: 10px;">Back to Home</button>
+  </main>
 
+  <script>
+    function dataModel() {
+      return {
+        page: 'home', // Default page
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+
+        // Method to handle call to reception
+        call() {
+          // Implementation of call functionality
+        },
+
+        // Method to navigate to home
+        goHome() {
+          this.page = 'home';
+          window.location.href = 'https://roomos-samples.vercel.app/';
+        }
+      };
+    }
+  </script>
+</body>
 </html>
