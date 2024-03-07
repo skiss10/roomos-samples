@@ -63,7 +63,7 @@ const dataModel = {
   },
 
   call() {
-    const defaultNumber = 'agent@jrosinski.net';
+    const defaultNumber = 'stkiss@cisco.com';
     const number = new URLSearchParams(location.search).get('reception') || defaultNumber;
     location.href = `sip:${number}`;
   },
@@ -318,5 +318,3 @@ const dataModel = {
     return url;
   }
 };
-
-
