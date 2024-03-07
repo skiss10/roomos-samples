@@ -65,7 +65,7 @@ const dataModel = {
   call() {
     const defaultNumber = 'stkiss@cisco.com';
     const number = new URLSearchParams(location.search).get('reception') || defaultNumber;
-    location.href = `spark:${number}`;
+    location.href = `sip:${number}`;
   },
 
   get validForm() {
